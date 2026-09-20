@@ -10,6 +10,8 @@ website-profile-alif/
 ├── assets/
 │   ├── background.svg          # Aset gambar background (fallback lokal)
 │   └── avatar-placeholder.svg  # Aset placeholder foto profil (fallback lokal)
+├── Dockerfile           # Container nginx untuk deploy ke Cloud Run
+├── .dockerignore
 └── README.md
 ```
 
@@ -47,3 +49,30 @@ Ganti nilai `src` pada tag `<img>` di `index.html` (foto profil) atau nilai `url
 1. Simpan gambar baru ke folder `assets/`.
 2. Ubah `src` pada `<img>` di `index.html` menjadi path lokal, misal `assets/profile.jpg`.
 3. Ubah `background-image` pada `.hero` di dalam blok `<style>` menjadi `url("assets/background.svg")` atau nama file lokal lainnya.
+
+## Deploy ke Cloud Run (GCP)
+
+Website ini disajikan lewat container nginx (`Dockerfile`) yang listen di port 8080, sesuai kontrak port Cloud Run.
+
+Build & deploy pakai Cloud Build + Cloud Run:
+
+```bash
+gcloud builds submit --tag gcr.io/PROJECT_ID/website-profile-alif
+
+gcloud run deploy website-profile-alif \
+  --image gcr.io/PROJECT_ID/website-profile-alif \
+  --platform managed \
+  --region REGION \
+  --allow-unauthenticated
+```
+
+Ganti `PROJECT_ID` dengan ID project GCP dan `REGION` dengan region tujuan (misal `asia-southeast2`).
+
+Uji coba container secara lokal:
+
+```bash
+docker build -t website-profile-alif .
+docker run -p 8080:8080 website-profile-alif
+```
+
+Lalu buka `http://localhost:8080`.
