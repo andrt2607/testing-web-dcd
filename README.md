@@ -7,9 +7,6 @@ Website profil sederhana yang dibuat hanya menggunakan HTML dan CSS (CSS ditulis
 ```
 website-profile-alif/
 ├── index.html          # Halaman utama (struktur konten + CSS inline)
-├── assets/
-│   ├── background.svg          # Aset gambar background (fallback lokal)
-│   └── avatar-placeholder.svg  # Aset placeholder foto profil (fallback lokal)
 ├── Dockerfile           # Container nginx untuk deploy ke Cloud Run
 ├── .dockerignore
 └── README.md
@@ -34,8 +31,6 @@ Referensi ke aset ini ada di `index.html`:
 - Tag `<img>` di dalam `.profile-frame` — foto profil
 - Properti `background-image` pada `.hero` di dalam blok `<style>` — background
 
-Aset lokal di folder `assets/` tetap disimpan sebagai cadangan/fallback bila ingin kembali menggunakan aset lokal.
-
 ## Cara Menjalankan
 
 Buka file `index.html` langsung di browser, atau jalankan lewat live server (opsional) untuk auto-reload saat mengedit.
@@ -46,9 +41,10 @@ Buka file `index.html` langsung di browser, atau jalankan lewat live server (ops
 Ganti nilai `src` pada tag `<img>` di `index.html` (foto profil) atau nilai `url(...)` pada `.hero` di dalam blok `<style>` (background) dengan URL gambar baru.
 
 **Menggunakan file lokal:**
-1. Simpan gambar baru ke folder `assets/`.
+1. Buat folder `assets/` dan simpan gambar baru di dalamnya.
 2. Ubah `src` pada `<img>` di `index.html` menjadi path lokal, misal `assets/profile.jpg`.
 3. Ubah `background-image` pada `.hero` di dalam blok `<style>` menjadi `url("assets/background.svg")` atau nama file lokal lainnya.
+4. Tambahkan `COPY assets/ /usr/share/nginx/html/assets/` di `Dockerfile` supaya folder ikut ke-copy ke image.
 
 ## Deploy ke Cloud Run (GCP)
 
