@@ -22,14 +22,20 @@ website-profile-alif/
 
 ## Sumber Aset
 
-Foto profil dan gambar background saat ini diambil dari Google Cloud Storage:
+Semua gambar diambil dari Google Cloud Storage (bucket `bucket-testing-dicoding`):
 
-- Foto profil: `https://storage.googleapis.com/bucket-testing-dicoding/WhatsApp%20Image%202026-09-19%20at%2021.04.10.jpeg`
-- Background: `https://storage.googleapis.com/bucket-testing-dicoding/background.svg`
+- Foto profil: `WhatsApp%20Image%202026-09-19%20at%2021.04.10.jpeg`
+- Background: `background.svg`
+- Ikon GitHub: `icon-github.svg`
+- Ikon LinkedIn: `icon-linkedin.svg`
+- Ikon Email: `icon-email.svg`
+
+**Penting:** upload 3 file ikon (`icon-github.svg`, `icon-linkedin.svg`, `icon-email.svg`) ke bucket dengan nama persis seperti di atas, atau sesuaikan nama file di `index.html` kalau nama filenya beda.
 
 Referensi ke aset ini ada di `index.html`:
 - Tag `<img>` di dalam `.profile-frame` — foto profil
 - Properti `background-image` pada `.hero` di dalam blok `<style>` — background
+- Tag `<img>` di dalam `.social-links` — ikon GitHub, LinkedIn, Email
 
 ## Cara Menjalankan
 

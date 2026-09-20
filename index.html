@@ -77,18 +77,26 @@ body {
 }
 
 .social-links a {
-  color: #f8fafc;
-  text-decoration: none;
-  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border: 1px solid rgba(248, 250, 252, 0.5);
-  border-radius: 999px;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 50%;
+  background-color: rgba(248, 250, 252, 0.08);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
   background-color: #f8fafc;
-  color: #0f172a;
+  transform: translateY(-3px);
+}
+
+.social-links img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 /* ---------- Content ---------- */
@@ -171,9 +179,15 @@ body {
     <p class="title">Cloud &amp; DevOps Enthusiast</p>
 
     <nav class="social-links">
-      <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:aliefazuka123@gmail.com">Email</a>
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://storage.googleapis.com/bucket-testing-dicoding/icon-github.svg" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://storage.googleapis.com/bucket-testing-dicoding/icon-linkedin.svg" alt="LinkedIn">
+      </a>
+      <a href="mailto:aliefazuka123@gmail.com">
+        <img src="https://storage.googleapis.com/bucket-testing-dicoding/icon-email.svg" alt="Email">
+      </a>
     </nav>
   </div>
 </header>
